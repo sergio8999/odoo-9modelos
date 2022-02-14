@@ -1,0 +1,527 @@
+<odoo>
+  <data>
+
+    <!-- Vistas de producto -->
+
+    <record model="ir.ui.view" id="venta_productos.producto_list_view">
+      <field name="name">venta_productos.producto.view.tree</field>
+      <field name="model">venta_productos.producto</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="nombre"/>
+          <field name="descripcion"/>
+          <field name="precio"/>
+          <field name="proveedor_id" />
+          <field name="almacen_id" />
+        </tree>
+      </field>
+    </record>
+
+<!-- search -->
+
+    <record model="ir.ui.view" id="venta_productos.producto_search_view">
+      <field name="name">venta_productos.producto.view.search</field>
+      <field name="model">venta_productos.producto</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <field name="nombre"/>
+          <field name="descripcion"/>
+          <field name="precio"/>
+          <field name="proveedor_id" />
+          <field name="almacen_id" />
+          <group>
+            <filter name="group_by_nombre" string="nombre" context="{'gropup_by':'nombre'}" />
+          </group>
+        </search>
+      </field>
+    </record>
+
+
+    <!-- form -->
+
+    <record model="ir.ui.view" id="venta_productos.producto_form_view">
+      <field name="name">venta_productos.producto.view.form</field>
+      <field name="model">venta_productos.producto</field>
+      <field name="arch" type="xml">
+        <form string="Información producto">
+          <sheet>
+            <div class="oe_title">
+              <h1>
+                refProducto <field name="name" placeholder="ref"/>
+              </h1>
+            </div>
+            <group>
+              <group>
+                <separator string="Datos"/>
+                <field name="nombre" placeholder="nombre"/>
+                <field name="descripcion" placeholder="descripcion"/>
+                <field name="precio" placeholder="precio"/>
+                <field name="proveedor_id" />
+                <field name="almacen_id" />
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+        <!-- vista proveedor -->
+
+    <record model="ir.ui.view" id="venta_productos.proveedor_list_view">
+      <field name="name">venta_productos.proveedor.view.tree</field>
+      <field name="model">venta_productos.proveedor</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="nombre"/>
+          <field name="telefono"/>
+          <field name="productos_ids" />
+        </tree>
+      </field>
+    </record>
+
+<!-- search -->
+
+    <record model="ir.ui.view" id="venta_productos.proveedor_search_view">
+      <field name="name">venta_productos.proveedor.view.search</field>
+      <field name="model">venta_productos.proveedor</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <field name="nombre"/>
+          <field name="telefono"/>
+          <field name="productos_ids" />
+          <group>
+            <filter name="group_by_nombre" string="nombre" context="{'gropup_by':'nombre'}" />
+          </group>
+        </search>
+      </field>
+    </record>
+
+
+    <!-- form -->
+
+    <record model="ir.ui.view" id="venta_productos.proveedor_form_view">
+      <field name="name">venta_productos.proveedor.view.form</field>
+      <field name="model">venta_productos.proveedor</field>
+      <field name="arch" type="xml">
+        <form string="Información producto">
+          <sheet>
+            <div class="oe_title">
+              <h1>
+                refProvedor <field name="name" placeholder="proveedor"/>
+              </h1>
+            </div>
+            <group>
+              <group>
+                <separator string="Datos"/>
+                <field name="nombre" placeholder="nombre"/>
+                <field name="telefono" placeholder="telefono"/>
+                <field name="productos_ids" />
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- Vistas de almacen -->
+
+    <record model="ir.ui.view" id="venta_productos.almacen_list_view">
+      <field name="name">venta_productos.almacen.view.tree</field>
+      <field name="model">venta_productos.almacen</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="nombre"/>
+          <field name="direccion"/>
+          <field name="zona_id"/>
+          <field name="productos_ids" />
+        </tree>
+      </field>
+    </record>
+
+<!-- search -->
+
+    <record model="ir.ui.view" id="venta_productos.almacen_search_view">
+      <field name="name">venta_productos.almacen.view.search</field>
+      <field name="model">venta_productos.almacen</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <field name="nombre"/>
+          <field name="direccion"/>
+          <field name="zona_id"/>
+          <field name="productos_ids" />
+          <group>
+            <filter name="group_by_nombre" string="nombre" context="{'gropup_by':'nombre'}" />
+          </group>
+        </search>
+      </field>
+    </record>
+
+
+    <!-- form -->
+
+    <record model="ir.ui.view" id="venta_productos.almacen_form_view">
+      <field name="name">venta_productos.almacen.view.form</field>
+      <field name="model">venta_productos.almacen</field>
+      <field name="arch" type="xml">
+        <form string="Información almacen">
+          <sheet>
+            <div class="oe_title">
+              <h1>
+                Cod. almácen <field name="name" placeholder="codigo almacen"/>
+              </h1>
+            </div>
+            <group>
+              <group>
+                <separator string="Datos"/>
+                <field name="nombre" placeholder="nombre"/>
+                <field name="direccion" placeholder="direccion"/>
+                <field name="zona_id"/>
+                <field name="productos_ids" />
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+     <!-- Vistas de zona -->
+
+    <record model="ir.ui.view" id="venta_productos.zona_list_view">
+      <field name="name">venta_productos.zona.view.tree</field>
+      <field name="model">venta_productos.zona</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="ciudad"/>
+          <field name="provincia"/>
+          <field name="almacenes_ids"/>
+        </tree>
+      </field>
+    </record>
+
+<!-- search -->
+
+    <record model="ir.ui.view" id="venta_productos.zona_search_view">
+      <field name="name">venta_productos.zona.view.search</field>
+      <field name="model">venta_productos.zona</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <field name="ciudad"/>
+          <field name="provincia"/>
+          <field name="almacenes_ids"/>
+          <group>
+            <filter name="group_by_nombre" string="nombre" context="{'gropup_by':'nombre'}" />
+          </group>
+        </search>
+      </field>
+    </record>
+
+
+    <!-- form -->
+
+    <record model="ir.ui.view" id="venta_productos.zona_form_view">
+      <field name="name">venta_productos.zona.view.form</field>
+      <field name="model">venta_productos.zona</field>
+      <field name="arch" type="xml">
+        <form string="Información almacen">
+          <sheet>
+            <div class="oe_title">
+              <h1>
+                Cod. zona <field name="name" placeholder="codigo zona"/>
+              </h1>
+            </div>
+            <group>
+              <group>
+                <separator string="Datos"/>
+                <field name="ciudad" placeholder="ciudad"/>
+                <field name="provincia" placeholder="provincia"/>
+                <field name="almacenes_ids"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+     <!-- Vistas de linea_pedido -->
+
+    <record model="ir.ui.view" id="venta_productos.linea_pedido_list_view">
+      <field name="name">venta_productos.linea_pedido.view.tree</field>
+      <field name="model">venta_productos.linea_pedido</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="cantidad"/>
+          <field name="precio"/>
+          <field name="pedido_id"/>
+          <field name="producto_id"/>
+        </tree>
+      </field>
+    </record>
+
+<!-- search -->
+
+    <record model="ir.ui.view" id="venta_productos.linea_pedido_search_view">
+      <field name="name">venta_productos.linea_pedido.view.search</field>
+      <field name="model">venta_productos.linea_pedido</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <field name="cantidad"/>
+          <field name="precio"/>
+          <field name="pedido_id"/>
+          <field name="producto_id"/>
+          <group>
+            <filter name="group_by_nombre" string="nombre" context="{'gropup_by':'nombre'}" />
+          </group>
+        </search>
+      </field>
+    </record>
+
+
+    <!-- form -->
+
+    <record model="ir.ui.view" id="venta_productos.linea_pedido_form_view">
+      <field name="name">venta_productos.linea_pedido.view.form</field>
+      <field name="model">venta_productos.linea_pedido</field>
+      <field name="arch" type="xml">
+        <form string="Información linea pedido">
+          <sheet>
+            <div class="oe_title">
+              <h1>
+                Cod. linea pedido <field name="name" placeholder="codigo linea pedido"/>
+              </h1>
+            </div>
+            <group>
+              <group>
+                <separator string="Datos"/>
+                <field name="cantidad" placeholder="cantidad"/>
+                <field name="precio" placeholder="precio"/>
+                <field name="pedido_id"/>
+                <field name="producto_id"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+        <!-- Vistas de pedido -->
+
+    <record model="ir.ui.view" id="venta_productos.linea_pedido_list_view">
+      <field name="name">venta_productos.pedido.view.tree</field>
+      <field name="model">venta_productos.pedido</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="direccion"/>
+          <field name="fecha_pago"/>
+          <field name="cliente_id"/>
+          <field name="lineas_pedidos_ids"/>
+        </tree>
+      </field>
+    </record>
+
+<!-- search -->
+
+    <record model="ir.ui.view" id="venta_productos.pedido_search_view">
+      <field name="name">venta_productos.pedido.view.search</field>
+      <field name="model">venta_productos.pedido</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <field name="direccion"/>
+          <field name="fecha_pago"/>
+          <field name="cliente_id"/>
+          <field name="lineas_pedidos_ids"/>
+          <group>
+            <filter name="group_by_nombre" string="nombre" context="{'gropup_by':'nombre'}" />
+          </group>
+        </search>
+      </field>
+    </record>
+
+
+    <!-- form -->
+
+    <record model="ir.ui.view" id="venta_productos.pedido_form_view">
+      <field name="name">venta_productos.pedido.view.form</field>
+      <field name="model">venta_productos.pedido</field>
+      <field name="arch" type="xml">
+        <form string="Información pedido">
+          <sheet>
+            <div class="oe_title">
+              <h1>
+                Cod. pedido <field name="name" placeholder="codigo pedido"/>
+              </h1>
+            </div>
+            <group>
+              <group>
+                <separator string="Datos"/>
+                <field name="direccion" placeholder="direccion"/>
+                <field name="fecha_pago"/>
+                <field name="cliente_id"/>
+                <field name="lineas_pedidos_ids"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Calendario -->
+    <record model="ir.ui.view" id="venta_productos.pedido_calendar_view">
+      <field name="name">venta_productos.pedido.view.calendar</field>
+      <field name="model">venta_productos.pedido</field>
+      <field name="arch" type="xml">
+        <calendar string="Fecha de pago" date_start="fecha_pago" color="direccion" mode="month">
+          <field name="name"/>
+          <field name="direccion"/>
+        </calendar>
+      </field>
+    </record>
+
+         <!-- Vistas de cliente -->
+
+    <record model="ir.ui.view" id="venta_productos.cliente_list_view">
+      <field name="name">venta_productos.cliente.view.tree</field>
+      <field name="model">venta_productos.cliente</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="nombre"/>
+          <field name="direccion"/>
+          <field name="pedidos_ids"/>
+        </tree>
+      </field>
+    </record>
+
+<!-- search -->
+
+    <record model="ir.ui.view" id="venta_productos.cliente_search_view">
+      <field name="name">venta_productos.cliente.view.search</field>
+      <field name="model">venta_productos.cliente</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <field name="nombre"/>
+          <field name="direccion"/>
+          <field name="pedidos_ids"/>
+          <group>
+            <filter name="group_by_nombre" string="nombre" context="{'gropup_by':'nombre'}" />
+          </group>
+        </search>
+      </field>
+    </record>
+
+
+    <!-- form -->
+
+    <record model="ir.ui.view" id="venta_productos.cliente_form_view">
+      <field name="name">venta_productos.cliente.view.form</field>
+      <field name="model">venta_productos.cliente</field>
+      <field name="arch" type="xml">
+        <form string="Información cliente">
+          <sheet>
+            <div class="oe_title">
+              <h1>
+                Cod. cliente <field name="name" placeholder="codigo cliente"/>
+              </h1>
+            </div>
+            <group>
+              <group>
+                <separator string="Datos"/>
+                <field name="nombre" placeholder="nombre"/>
+                <field name="direccion" placeholder="direcciob"/>
+                <field name="pedidos_ids"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Definición de menús-->
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="venta_productos.producto_action_window">
+      <field name="name">Productos</field>
+      <field name="res_model">venta_productos.producto</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="venta_productos.proveedor_action_window">
+      <field name="name">Proveedores</field>
+      <field name="res_model">venta_productos.proveedor</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="venta_productos.almacen_action_window">
+      <field name="name">Almacenes</field>
+      <field name="res_model">venta_productos.almacen</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="venta_productos.zona_action_window">
+      <field name="name">Zonas</field>
+      <field name="res_model">venta_productos.zona</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="venta_productos.linea_pedido_action_window">
+      <field name="name">Lineas pedido</field>
+      <field name="res_model">venta_productos.linea_pedido</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="venta_productos.pedido_action_window">
+      <field name="name">Pedidos</field>
+      <field name="res_model">venta_productos.pedido</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="venta_productos.cliente_action_window">
+      <field name="name">Clientes</field>
+      <field name="res_model">venta_productos.cliente</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!--                 -->
+
+    <menuitem name="venta_productos" id="venta_productos.menu_root"/>
+
+      <menuitem name="Productos" id="venta_productos.menu_producto" parent="venta_productos.menu_root"/>
+      <menuitem name="Proveedores" id="venta_productos.menu_proveedor" parent="venta_productos.menu_root"/>
+      <menuitem name="Almacenes" id="venta_productos.menu_almacen" parent="venta_productos.menu_root"/>
+      <menuitem name="Zonas" id="venta_productos.menu_zona" parent="venta_productos.menu_root"/>
+      <menuitem name="Lineas pedido" id="venta_productos.menu_linea_pedido" parent="venta_productos.menu_root"/>
+      <menuitem name="Pedidos" id="venta_productos.menu_pedido" parent="venta_productos.menu_root"/>
+      <menuitem name="Clientes" id="venta_productos.menu_cliente" parent="venta_productos.menu_root"/>
+
+      <menuitem name="List" id="venta_productos.menu_producto_list" parent="venta_productos.menu_producto"
+              action="venta_productos.producto_action_window"/>
+      <menuitem name="List" id="venta_productos.menu_proveedor_list" parent="venta_productos.menu_proveedor"
+              action="venta_productos.proveedor_action_window"/>
+      <menuitem name="List" id="venta_productos.menu_almacen_list" parent="venta_productos.menu_almacen"
+              action="venta_productos.almacen_action_window"/>
+      <menuitem name="List" id="venta_productos.menu_zona_list" parent="venta_productos.menu_zona"
+              action="venta_productos.zona_action_window"/>
+      <menuitem name="List" id="venta_productos.menu_linea_pedido_list" parent="venta_productos.menu_linea_pedido"
+              action="venta_productos.linea_pedido_action_window"/>
+      <menuitem name="List" id="venta_productos.menu_pedido_list" parent="venta_productos.menu_pedido"
+              action="venta_productos.pedido_action_window"/>
+      <menuitem name="List" id="venta_productos.menu_cliente_list" parent="venta_productos.menu_cliente"
+              action="venta_productos.cliente_action_window"/>
+
+  </data>
+</odoo>

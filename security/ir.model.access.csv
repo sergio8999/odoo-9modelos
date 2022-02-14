@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_venta_productos_venta_productos,venta_productos.venta_productos,model_venta_productos_venta_productos,base.group_user,1,1,1,1
